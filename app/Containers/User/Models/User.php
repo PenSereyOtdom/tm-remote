@@ -37,6 +37,7 @@ class User extends UserModel implements ChargeableInterface
      */
     protected $fillable = [
       'name',
+        'company_name',
       'email',
       'password',
       'plan',

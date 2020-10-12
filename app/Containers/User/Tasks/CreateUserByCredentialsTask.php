@@ -31,12 +31,14 @@ class CreateUserByCredentialsTask extends Task
    * @param string|null $name
    * @param string $plan
    * @param string $status
+   * @param string $company_name
    * @return  mixed
    */
     public function run(
         bool $isClient = true,
         string $email,
         string $password,
+        string $company_name = null,
         string $name = null,
         string $plan = null,
         string $status = null
@@ -48,6 +50,7 @@ class CreateUserByCredentialsTask extends Task
                 'password'  => Hash::make($password),
                 'email'     => $email,
                 'name'      => $name,
+                'company_name' => $company_name,
                 'plan'      => $plan,
                 'status'    => $status,
                 'is_client' => $isClient,

@@ -38,7 +38,8 @@ class UserTransformer extends Transformer
         $response = [
           'object'               => 'User',
           'id'                   => $user->getHashedKey(),
-          'name'                 => $user->name,
+            'company_name'         => $user->company_name,
+            'name'                 => $user->name,
           'email'                => $user->email,
           'plan'                 => $user->plan,
           'status'               => $user->status,
