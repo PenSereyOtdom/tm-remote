@@ -21,7 +21,9 @@ class AuthorizationRolesSeeder_2 extends Seeder
     public function run()
     {
         // Default Roles ----------------------------------------------------------------
-        Apiato::call('Authorization@CreateRoleTask', ['admin', 'Administrator', 'Administrator Role', 999]);
+        Apiato::call('Authorization@CreateRoleTask', ['admin', 'Administrator', 'Administrator', 999]);
+        Apiato::call('Authorization@CreateRoleTask', ['user', 'user', 'user', 20]);
+
 
         // ...
 
