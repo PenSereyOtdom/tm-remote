@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Containers\User\UI\API\Controllers;
-
+use App\Ship\Exceptions\NotFoundException;
+use App\Ship\Parents\Exceptions\Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\User\UI\API\Requests\ChangePasswordRequest;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\FindUserByIdRequest;
@@ -16,6 +20,8 @@ use App\Containers\User\UI\API\Transformers\UserPrivateProfileTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
+use App\Containers\User\Models\User;
+
 
 /**
  * Class Controller.
@@ -36,7 +42,23 @@ class Controller extends ApiController
 
         return $this->transform($user, UserTransformer::class);
     }
-
+    /**
+     * @param \App\Containers\User\UI\API\Requests\ChangePasswordRequest $request
+     *
+     * @return  mixed
+     */
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $currentPassword = Auth::User()->password;
+        if( Hash::check($request['password'], $currentPassword) == false) {
+            throw new NotFoundException();
+        }
+        $userId = Auth::User()->id;
+        $user = User::find($userId);
+        $user->password = Hash::make($request['new-password']);;
+        $user->save();
+        return  $this->transform($user, UserTransformer::class);
+    }
     /**
      * @param \App\Containers\User\UI\API\Requests\CreateAdminRequest $request
      *
