@@ -24,7 +24,11 @@ class UpdateUserAction extends Action
     public function run(DataTransporter $data): User
     {
         $userData = [
-            'password'             => $data->password ? Hash::make($data->password) : null,
+            'name'                 => $data->name,
+            'email'                => $data->email,
+            'company_name'         => $data->company_name,
+            'plan'                 => $data->plan,
+            'status'               => $data->status
         ];
 
         // remove null values and their keys
