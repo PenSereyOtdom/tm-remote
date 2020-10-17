@@ -26,6 +26,7 @@ class UpdateUserAction extends Action
         $userData = [
             'name'                 => $data->name,
             'email'                => $data->email,
+            'password'             => $data->password,
             'company_name'         => $data->company_name,
             'plan'                 => $data->plan,
             'status'               => $data->status
