@@ -4,6 +4,7 @@ namespace App\Containers\User\Models;
 
 use App\Containers\Authorization\Traits\AuthenticationTrait;
 use App\Containers\Authorization\Traits\AuthorizationTrait;
+use App\Containers\Company\Models\Company;
 use App\Containers\Payment\Contracts\ChargeableInterface;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Containers\Payment\Traits\ChargeableTrait;
@@ -37,7 +38,6 @@ class User extends UserModel implements ChargeableInterface
      */
     protected $fillable = [
       'name',
-        'company_name',
       'email',
       'password',
       'plan',
@@ -82,4 +82,8 @@ class User extends UserModel implements ChargeableInterface
         return $this->hasMany(PaymentAccount::class);
     }
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
