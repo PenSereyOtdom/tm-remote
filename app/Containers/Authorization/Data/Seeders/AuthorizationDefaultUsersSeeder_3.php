@@ -22,11 +22,11 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
     {
         // Default Users (with their roles) ---------------------------------------------
         Apiato::call('User@CreateUserByCredentialsTask', [
-            $isClient = false,
+            false,
             'admin@gmail.com',
             'P@$$word@dmin',
             'Total Master',
-            'Super Admin'
+            'Super Admin',
         ])->assignRole(Apiato::call('Authorization@FindRoleTask', ['admin']));
 
         // ...

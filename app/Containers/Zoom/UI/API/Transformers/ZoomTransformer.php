@@ -36,9 +36,12 @@ class ZoomTransformer extends Transformer
             'join_url' => $entity->join_url,
             'start_time' => $entity->start_time,
             'password' => $entity->password,
+            'meeting_id'=> $entity->meeting_id,
             'note' => $entity->note,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
+            'host_id' => $entity->host_id,
+            'user_id' => $entity->user_id,
 
         ];
 

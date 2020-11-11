@@ -14,7 +14,6 @@ class CallCreateZoomMeetingTask extends Task
 
     public function run($data)
     {
-      try {
         $topic = $data['topic'];
         $start_time = $data['start_time'];
         $password = $data['password'];
@@ -32,9 +31,5 @@ class CallCreateZoomMeetingTask extends Task
         curl_close($ch);
         
         return json_decode($result);
-      }
-      catch (Exception $exception) {
-          throw new CreateResourceFailedException();
-      }
     }
 }

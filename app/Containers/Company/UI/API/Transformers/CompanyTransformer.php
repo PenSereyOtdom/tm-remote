@@ -19,7 +19,8 @@ class CompanyTransformer extends Transformer
      * @var  array
      */
     protected $availableIncludes = [
-        'createdBy'
+        'createdBy',
+        'users'
     ];
 
     /**
@@ -48,7 +49,10 @@ class CompanyTransformer extends Transformer
 
     public function includeCreatedBy(Company $company)
     {
-        // use `item` with single relationship
         return $this->item($company->user, new UserTransformer());
+    }
+
+    public function includeUsers (Company $company) {
+        return $this->collection($company->users, new UserTransformer());
     }
 }

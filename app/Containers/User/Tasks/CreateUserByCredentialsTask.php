@@ -39,19 +39,24 @@ class CreateUserByCredentialsTask extends Task
         string $password,
         string $name = null,
         string $plan = null,
-        string $status = null
+        string $status = null,
+        int $company_id = null
     ): User {
 
         try {
             // create new user
-            $user = $this->repository->create([
+            $data = [
                 'password'  => Hash::make($password),
                 'email'     => $email,
                 'name'      => $name,
                 'plan'      => $plan,
                 'status'    => $status,
                 'is_client' => $isClient,
-            ]);
+            ];
+            if ($company_id!=null) {
+                $data['company_id'] = $company_id;
+            }
+            $user = $this->repository->create($data);
 
         } catch (Exception $e) {
             throw (new CreateResourceFailedException())->debug($e);

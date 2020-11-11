@@ -20,9 +20,6 @@ class CreateCompanyTask extends Task
     public function run(array $data)
     {
         try {
-            $user_id = auth('api')->user()->id;
-            $data['user_id']=$user_id;
-
             return $this->repository->create($data);
         }
         catch (Exception $exception) {

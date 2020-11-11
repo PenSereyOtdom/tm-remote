@@ -8,6 +8,7 @@ use App\Containers\Company\Models\Company;
 use App\Containers\Payment\Contracts\ChargeableInterface;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Containers\Payment\Traits\ChargeableTrait;
+use App\Containers\Zoom\Models\Zoom;
 use App\Ship\Parents\Models\UserModel;
 use Illuminate\Notifications\Notifiable;
 
@@ -40,6 +41,7 @@ class User extends UserModel implements ChargeableInterface
       'name',
       'email',
       'password',
+      'company_id',
       'plan',
       'status',
       'device',
@@ -51,6 +53,7 @@ class User extends UserModel implements ChargeableInterface
     protected $casts = [
         'is_client' => 'boolean',
         'confirmed' => 'boolean',
+        'company_id'=> 'integer'
     ];
 
     /**
@@ -85,5 +88,10 @@ class User extends UserModel implements ChargeableInterface
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+
+    public function zooms() {
+      return $this->hasMany(Zoom::class);
     }
 }

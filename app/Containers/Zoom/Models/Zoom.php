@@ -15,7 +15,9 @@ class Zoom extends Model
       'start_time',
       'password',
       'user_id',
-      'note'
+      'note',
+      'meeting_id',
+      'host_id'
     ];
 
     protected $attributes = [
@@ -27,7 +29,7 @@ class Zoom extends Model
     ];
 
     protected $casts = [
-      'user_id'=>'integer'
+      'user_id'=>'integer',
     ];
 
     protected $dates = [

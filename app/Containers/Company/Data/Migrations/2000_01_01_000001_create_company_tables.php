@@ -15,16 +15,8 @@ class CreateCompanyTables extends Migration
 
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('user_id');
             $table->timestamps();
             //$table->softDeletes();
-
-            $table->foreign('user_id')->references('id')->on('users');
-        });
-        Schema::table('users', function(Blueprint $table) {
-            $table->unsignedInteger('company_id')->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
-
         });
     }
 
