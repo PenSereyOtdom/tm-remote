@@ -25,11 +25,10 @@ class Zoom extends Model
     ];
 
     protected $hidden = [
-      'password'
+
     ];
 
     protected $casts = [
-      'user_id'=>'integer',
     ];
 
     protected $dates = [

@@ -40,7 +40,7 @@ class CreateUserByCredentialsTask extends Task
         string $name = null,
         string $plan = null,
         string $status = null,
-        int $company_id = null
+        int $department_id = null
     ): User {
 
         try {
@@ -53,8 +53,8 @@ class CreateUserByCredentialsTask extends Task
                 'status'    => $status,
                 'is_client' => $isClient,
             ];
-            if ($company_id!=null) {
-                $data['company_id'] = $company_id;
+            if ($department_id!=null) {
+                $data['department_id'] = $department_id;
             }
             $user = $this->repository->create($data);
 

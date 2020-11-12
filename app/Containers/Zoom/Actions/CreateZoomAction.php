@@ -13,11 +13,9 @@ class CreateZoomAction extends Action
         $data = $request->sanitizeInput([
           'topic','start_time','password','note'
         ]);
-        
         $zoom_res = Apiato::call('Zoom@CallCreateZoomMeetingTask', [$data]);
-        $data['zoom_res']=$zoom_res;
-        $zoom = Apiato::call('Zoom@CreateZoomTask', [$data]);
-
+        $data['user_id'] = auth('api')->id();
+        $zoom = Apiato::call('Zoom@CreateZoomTask', [$data,$zoom_res]);
         return $zoom;
     }
 }

@@ -4,7 +4,7 @@ namespace App\Containers\User\Models;
 
 use App\Containers\Authorization\Traits\AuthenticationTrait;
 use App\Containers\Authorization\Traits\AuthorizationTrait;
-use App\Containers\Company\Models\Company;
+use App\Containers\Department\Models\Department;
 use App\Containers\Payment\Contracts\ChargeableInterface;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Containers\Payment\Traits\ChargeableTrait;
@@ -41,19 +41,19 @@ class User extends UserModel implements ChargeableInterface
       'name',
       'email',
       'password',
-      'company_id',
       'plan',
       'status',
       'device',
       'platform',
       'confirmed',
       'is_client',
+      'department_id'
     ];
 
     protected $casts = [
         'is_client' => 'boolean',
         'confirmed' => 'boolean',
-        'company_id'=> 'integer'
+        'department_id'=> 'integer'
     ];
 
     /**
@@ -85,11 +85,10 @@ class User extends UserModel implements ChargeableInterface
         return $this->hasMany(PaymentAccount::class);
     }
 
-    public function company()
+    public function department()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Department::class);
     }
-
 
     public function zooms() {
       return $this->hasMany(Zoom::class);

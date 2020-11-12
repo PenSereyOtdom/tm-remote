@@ -20,6 +20,7 @@ class FindCompanyByIdTask extends Task
     public function run($id)
     {
         try {
+            echo $id;
             return $this->repository->find($id);
         }
         catch (Exception $exception) {

@@ -3,7 +3,7 @@
 namespace App\Containers\User\UI\API\Transformers;
 
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
-use App\Containers\Company\UI\API\Transformers\CompanyTransformer;
+use App\Containers\Department\UI\API\Transformers\DepartmentTransformer;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Transformers\Transformer;
 
@@ -64,8 +64,8 @@ class UserPrivateProfileTransformer extends Transformer
     }
 
 
-    public function includeCompany(User $user)
+    public function includeDepartment(User $user)
     {
-        return $this->item($user->company, new CompanyTransformer());
+        return $this->item($user->department(), new DepartmentTransformer());
     }
 }

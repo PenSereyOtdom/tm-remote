@@ -2,6 +2,7 @@
 
 namespace App\Containers\Company\Models;
 
+use App\Containers\Department\Models\Department;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Models\Model;
 
@@ -36,11 +37,11 @@ class Company extends Model
      */
     protected $resourceKey = 'companies';
 
-    public function user () {
+    public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function users() {
-        return $this->hasMany(User::class);
+    public function departments() {
+        return $this->hasMany(Department::class);
     }
 }

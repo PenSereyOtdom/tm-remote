@@ -20,7 +20,7 @@ class CreateZoomTables extends Migration
             $table->string('password')->nullable();
             $table->string('note')->nullable();
             $table->string('host_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedBigInteger('meeting_id');
 
             $table->foreign('user_id')->references('id')->on('users');

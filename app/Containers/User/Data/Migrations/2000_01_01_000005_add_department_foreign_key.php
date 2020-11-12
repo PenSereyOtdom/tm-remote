@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddCompanyForeignKey extends Migration
+class AddDepartmentForeignKey extends Migration
 {
 
     /**
@@ -12,8 +12,8 @@ class AddCompanyForeignKey extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->unsignedBigInteger('company_id')->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->integer('department_id')->nullable();
+            $table->foreign('department_id')->references('id')->on('departments');
         });
     }
 
@@ -23,7 +23,7 @@ class AddCompanyForeignKey extends Migration
     public function down()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->dropForeign('company_id');
+            $table->dropForeign('department_id');
         });
     }
 }

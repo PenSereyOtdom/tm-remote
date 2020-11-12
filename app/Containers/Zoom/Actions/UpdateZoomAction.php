@@ -11,11 +11,13 @@ class UpdateZoomAction extends Action
     public function run(Request $request)
     {
         $data = $request->sanitizeInput([
-            // add your request data here
+          'topic','start_time','password','note'
         ]);
-
-        $zoom = Apiato::call('Zoom@UpdateZoomTask', [$request->id, $data]);
-
-        return $zoom;
+        
+        $zoom_db = Apiato::call('Zoom@FindZoomByIdTask', [$request->id]);
+        $data['meeting_id'] = $zoom_db['meeting_id'];
+        $zoom_res = Apiato::call('Zoom@CallUpdateZoomMeetingTask', [$data]);
+        $data['zoom_res']=$zoom_res;
+        return Apiato::call('Zoom@UpdateZoomTask', [$request->id, $data]);
     }
 }

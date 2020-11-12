@@ -13,7 +13,7 @@ class CreateCompanyAction extends Action
         $data = $request->sanitizeInput([
             'name'
         ]);
-        $user_id = auth('api')->user()->id;
+        $user_id = auth('api')->id();
         $data['user_id']=$user_id;
 
         $company = Apiato::call('Company@CreateCompanyTask', [$data]);

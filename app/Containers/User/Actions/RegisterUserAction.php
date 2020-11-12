@@ -37,7 +37,7 @@ class RegisterUserAction extends Action
             $data->name,
             $data->plan,
             $data->status,
-            $data->company_id
+            $data->department_id
         ]);
 
         Mail::send(new UserRegisteredMail($user));

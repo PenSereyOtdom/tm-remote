@@ -20,7 +20,9 @@ class UpdateZoomTask extends Task
     public function run($id, array $data)
     {
         try {
-            return $this->repository->update($data, $id);
+
+            $dataToUpdateDB = array("topic"=>$data['topic'],"start_time"=>$data['start_time'],"password"=>$data['password'],"note"=>$data['note']);
+            return $this->repository->update($dataToUpdateDB, $id);
         }
         catch (Exception $exception) {
             throw new UpdateResourceFailedException();
