@@ -4,11 +4,12 @@ namespace App\Containers\User\Models;
 
 use App\Containers\Authorization\Traits\AuthenticationTrait;
 use App\Containers\Authorization\Traits\AuthorizationTrait;
-use App\Containers\Department\Models\Department;
+use App\Containers\Company\Models\Company;
 use App\Containers\Payment\Contracts\ChargeableInterface;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Containers\Payment\Traits\ChargeableTrait;
 use App\Containers\Zoom\Models\Zoom;
+use App\Containers\ZoomUser\Models\ZoomUser;
 use App\Ship\Parents\Models\UserModel;
 use Illuminate\Notifications\Notifiable;
 
@@ -47,13 +48,13 @@ class User extends UserModel implements ChargeableInterface
       'platform',
       'confirmed',
       'is_client',
-      'department_id'
+      'company_id'
     ];
 
     protected $casts = [
         'is_client' => 'boolean',
         'confirmed' => 'boolean',
-        'department_id'=> 'integer'
+        'company_id'=> 'integer'
     ];
 
     /**
@@ -85,12 +86,16 @@ class User extends UserModel implements ChargeableInterface
         return $this->hasMany(PaymentAccount::class);
     }
 
-    public function department()
-    {
-        return $this->belongsTo(Department::class);
+    public function company() {
+        return $this->belongsTo(Company::class);
     }
 
     public function zooms() {
       return $this->hasMany(Zoom::class);
     }
+
+    public function zoomuser() {
+      return $this->belongsTo(ZoomUser::class,'company_id','company_id');
+    }
+
 }

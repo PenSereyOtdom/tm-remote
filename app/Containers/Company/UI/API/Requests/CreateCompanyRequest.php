@@ -24,7 +24,7 @@ class CreateCompanyRequest extends Request
      */
     protected $access = [
         'permissions' => '',
-        'roles'       => '',
+        'roles'       => 'admin',
     ];
 
     /**

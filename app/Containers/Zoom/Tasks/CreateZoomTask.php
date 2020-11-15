@@ -21,7 +21,19 @@ class CreateZoomTask extends Task
     public function run(array $data,$zoom_res)
     {
         try {
-            $dataToSaveDB = array("user_id"=>$data['user_id'],"topic"=>$zoom_res->topic,"start_time"=>$zoom_res->start_time,"password"=>$zoom_res->password,'join_url'=>$zoom_res->join_url,"note"=>$data['note'],"meeting_id"=>$zoom_res->id,"host_id"=>$zoom_res->host_id);
+            $dataToSaveDB = array(
+                'topic'=>$zoom_res->topic,
+                'start_time'=>$zoom_res->start_time,
+                'finish_time'=>date('Y-m-d H:i:s',strtotime($data['start_time']."+".$data['duration']." minute")),
+                'password'=>$zoom_res->password,
+                'join_url'=>$zoom_res->join_url,
+                'duration'=>$zoom_res->duration,
+                'meeting_id'=>$zoom_res->id,
+                'user_id'=>$data['user_id'],
+                'note'=>$data['note'],
+                'company_id'=>$data['company_id'],
+                'zoomuser_id'=>$data['zoomuser_id']
+            );
             return $this->repository->create($dataToSaveDB);
         }
         catch (Exception $exception) {

@@ -17,7 +17,9 @@ class CreateCompanyAction extends Action
         $data['user_id']=$user_id;
 
         $company = Apiato::call('Company@CreateCompanyTask', [$data]);
+        
 
+        
         return $company;
     }
 }

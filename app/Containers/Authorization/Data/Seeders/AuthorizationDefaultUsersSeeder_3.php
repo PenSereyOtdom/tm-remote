@@ -29,9 +29,7 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
             'Super Admin',
         ]);
         $user->assignRole(Apiato::call('Authorization@FindRoleTask', ['admin']));
-        $company = Apiato::call('Company@CreateCompanyTask', [array('name'=>'Default Company','user_id'=>$user->id)]);
-        $department = Apiato::call('Department@CreateDepartmentTask', [array('name'=>'Default Department','key'=>'0','company_id'=>$company->id)]);
-        $department->users()->save($user);
+        Apiato::call('Company@CreateCompanyTask', [array('name'=>'Default Company','user_id'=>$user->id)]);
 
 
     }

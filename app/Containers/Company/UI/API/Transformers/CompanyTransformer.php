@@ -3,8 +3,9 @@
 namespace App\Containers\Company\UI\API\Transformers;
 
 use App\Containers\Company\Models\Company;
-use App\Containers\Department\UI\API\Transformers\DepartmentTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
+use App\Containers\Zoom\UI\API\Transformers\ZoomTransformer;
+use App\Containers\ZoomUser\UI\API\Transformers\ZoomUserTransformer;
 use App\Ship\Parents\Transformers\Transformer;
 
 class CompanyTransformer extends Transformer
@@ -21,7 +22,9 @@ class CompanyTransformer extends Transformer
      */
     protected $availableIncludes = [
         'user',
-        'departments'
+        'users',
+        'zoomusers',
+        'zooms'
     ];
 
     /**
@@ -53,7 +56,15 @@ class CompanyTransformer extends Transformer
         return $this->item($company->user, new UserTransformer());
     }
 
-    public function includeDepartments  (Company $company) {
-        return $this->collection($company->departments, new DepartmentTransformer());
+    public function includeUsers  (Company $company) {
+        return $this->collection($company->users, new UserTransformer());
+    }
+
+    public function includeZooms (Company $company ) {
+        return $this->collection($company->zooms, new ZoomTransformer());
+    }
+
+    public function includeZoomUsers (Company $company) {
+        return $this->collection($company->zoomusers, new ZoomUserTransformer());
     }
 }

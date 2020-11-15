@@ -2,16 +2,16 @@
 
 namespace App\Containers\Company\Models;
 
-use App\Containers\Department\Models\Department;
 use App\Containers\User\Models\User;
+use App\Containers\Zoom\Models\Zoom;
+use App\Containers\ZoomUser\Models\ZoomUser;
 use App\Ship\Parents\Models\Model;
 
 class Company extends Model
 {
     protected $fillable = [
         'name',
-        'user_id'
-
+        'user_id',
     ];
 
     protected $attributes = [
@@ -41,7 +41,15 @@ class Company extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function departments() {
-        return $this->hasMany(Department::class);
+    public function users() {
+        return $this->hasMany(User::class);
+    }
+
+    public function zoomusers() {
+        return $this->hasMany(ZoomUser::class);
+    }
+
+    public function zooms () {
+        return $this->hasMany(Zoom::class);
     }
 }

@@ -17,13 +17,18 @@ class CreateZoomTables extends Migration
             $table->string('topic')->nullable();
             $table->string('join_url')->nullable();
             $table->timestamp('start_time')->nullable();
+            $table->timestamp('finish_time')->nullable();
+            $table->unsignedInteger('duration')->nullable();
             $table->string('password')->nullable();
             $table->string('note')->nullable();
-            $table->string('host_id');
-            $table->unsignedInteger('user_id');
             $table->unsignedBigInteger('meeting_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('company_id');
+            $table->unsignedInteger('zoomuser_id');
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('zoomuser_id')->references('id')->on('zoomusers');
 
             $table->timestamps();
             //$table->softDeletes();
