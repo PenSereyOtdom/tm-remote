@@ -21,7 +21,8 @@ class CallCreateZoomMeetingTask extends Task
         $url = "https://api.zoom.us/v2/users/".$data['zoom_user_id']."/meetings";
         $authorization = "Authorization: Bearer ".$token;
         $ch = curl_init( $url );
-        $payload = json_encode( array( "topic"=> $topic,"type"=>$type, "start_time"=>$start_time,"password"=>$password, 'timezone'=>'UTC' ) );
+        $settings = array('waiting_room'=>false,'join_before_host'=>true);
+        $payload = json_encode( array( "topic"=> $topic,"type"=>$type, "start_time"=>$start_time,"password"=>$password, 'timezone'=>'UTC','settings'=>$settings ) );
         curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
         curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json',$authorization));
 
