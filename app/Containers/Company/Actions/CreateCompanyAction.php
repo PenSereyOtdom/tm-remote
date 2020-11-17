@@ -11,8 +11,10 @@ class CreateCompanyAction extends Action
     public function run(Request $request)
     {
         $data = $request->sanitizeInput([
-            'name'
+            'name',
+            'default_zoom_user_type',
         ]);
+
         $user_id = auth('api')->id();
         $data['user_id']=$user_id;
 

@@ -54,7 +54,6 @@ class User extends UserModel implements ChargeableInterface
     protected $casts = [
         'is_client' => 'boolean',
         'confirmed' => 'boolean',
-        'company_id'=> 'integer'
     ];
 
     /**

@@ -28,7 +28,7 @@ class CreateZoomTables extends Migration
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('zoomuser_id')->references('id')->on('zoomusers');
+            $table->foreign('zoomuser_id')->references('id')->on('zoomusers')->cascadeOnDelete();
 
             $table->timestamps();
             //$table->softDeletes();

@@ -38,9 +38,9 @@ class CompanyTransformer extends Transformer
             'object' => 'Company',
             'id' => $entity->getHashedKey(),
             'name'=> $entity->name,
+            'default_zoom_user_type'=>$entity->default_zoom_user_type,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
-
         ];
 
         $response = $this->ifAdmin([
@@ -51,8 +51,7 @@ class CompanyTransformer extends Transformer
         return $response;
     }
 
-    public function includeUser(Company $company)
-    {
+    public function includeUser(Company $company) {
         return $this->item($company->user, new UserTransformer());
     }
 
@@ -60,7 +59,7 @@ class CompanyTransformer extends Transformer
         return $this->collection($company->users, new UserTransformer());
     }
 
-    public function includeZooms (Company $company ) {
+    public function includeZooms (Company $company) {
         return $this->collection($company->zooms, new ZoomTransformer());
     }
 
