@@ -11,7 +11,8 @@ class UpdateCompanyAction extends Action
     public function run(Request $request)
     {
         $data = $request->sanitizeInput([
-            'name'
+            'name',
+            'default_zoom_user_type'
         ]);
 
         $company = Apiato::call('Company@UpdateCompanyTask', [$request->id, $data]);

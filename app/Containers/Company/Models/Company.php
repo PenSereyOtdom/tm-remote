@@ -9,8 +9,12 @@ use App\Ship\Parents\Models\Model;
 
 class Company extends Model
 {
+
+    protected $table = "companies";
+
     protected $fillable = [
         'name',
+        'default_zoom_user_type',
         'user_id',
     ];
 
@@ -23,7 +27,6 @@ class Company extends Model
     ];
 
     protected $casts = [
-        'user_id'=>'integer'
 
     ];
 
@@ -41,7 +44,7 @@ class Company extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function users() {
+    public function users () {
         return $this->hasMany(User::class);
     }
 

@@ -45,7 +45,6 @@ class ZoomTransformer extends Transformer
             'note' => $entity->note,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
-            'host_id' => $entity->host_id,
         ];
 
         $response = $this->ifAdmin([

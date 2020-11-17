@@ -24,7 +24,7 @@ class DeleteCompanyRequest extends Request
      */
     protected $access = [
         'permissions' => '',
-        'roles'       => 'admin',
+        'roles'       => '',
     ];
 
     /**

@@ -24,7 +24,7 @@ class CreateCompanyRequest extends Request
      */
     protected $access = [
         'permissions' => '',
-        'roles'       => 'admin',
+        'roles'       => '',
     ];
 
     /**
@@ -60,8 +60,7 @@ class CreateCompanyRequest extends Request
     /**
      * @return  bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return $this->check([
             'hasAccess',
         ]);

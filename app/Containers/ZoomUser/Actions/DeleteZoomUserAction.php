@@ -10,6 +10,8 @@ class DeleteZoomUserAction extends Action
 {
     public function run(Request $request)
     {
+        $data = Apiato::call('ZoomUser@FindZoomUserByIdTask', [$request->id]);
+        Apiato::call('ZoomUser@CallDeleteZoomUserTask', [$data]);
         return Apiato::call('ZoomUser@DeleteZoomUserTask', [$request->id]);
     }
 }
