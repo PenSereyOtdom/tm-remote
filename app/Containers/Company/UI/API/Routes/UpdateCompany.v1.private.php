@@ -20,7 +20,7 @@
  */
 
 /** @var Route $router */
-$router->patch('companies/{id}', [
+$router->put('companies/{id}', [
     'as' => 'api_company_update_company',
     'uses'  => 'Controller@updateCompany',
     'middleware' => [
