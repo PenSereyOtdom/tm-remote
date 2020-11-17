@@ -20,7 +20,7 @@
  */
 
 /** @var Route $router */
-$router->patch('zooms/{id}', [
+$router->put('zooms/{id}', [
     'as' => 'api_zoom_update_zoom',
     'uses'  => 'Controller@updateZoom',
     'middleware' => [
