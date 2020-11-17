@@ -2,8 +2,7 @@
 
 namespace App\Containers\Authorization\Data\Seeders;
 
-use Apiato\Core\Foundation\Facades\Apiato;
-use App\Ship\Parents\Seeders\Seeder;
+use Apiato\Core\Foundation\Facades\Apiato; use App\Ship\Parents\Seeders\Seeder;
 
 /**
  * Class AuthorizationDefaultUsersSeeder_3
@@ -32,7 +31,7 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
             1
         ]);
         $user->assignRole(Apiato::call('Authorization@FindRoleTask', ['admin']));
-        Apiato::call('Company@UpdateCompanyTask', [1,array('name'=>'Default Company','user_id'=>1)]);
+        Apiato::call('Company@UpdateCompanyTask', [1,array('name'=>'Default Company','user_id'=>1, "default_zoom_user_type"=>1)]);
 
 
     }
