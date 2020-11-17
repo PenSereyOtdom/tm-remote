@@ -29,7 +29,7 @@ class UpdateUserAction extends Action
             'password'             => Hash::make($data->password),
             'plan'                 => $data->plan,
             'status'               => $data->status,
-            'company_id'               => $data->company_id
+            'company_id'           => $data->company_id
         ];
 
         // remove null values and their keys
