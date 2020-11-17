@@ -28,7 +28,8 @@ class UpdateUserAction extends Action
             'email'                => $data->email,
             'password'             => Hash::make($data->password),
             'plan'                 => $data->plan,
-            'status'               => $data->status
+            'status'               => $data->status,
+            'company_id'               => $data->company_id
         ];
 
         // remove null values and their keys

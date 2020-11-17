@@ -29,6 +29,7 @@ class UpdateUserRequest extends Request
      */
     protected $decode = [
         'id',
+        'company_id',
     ];
 
     /**
