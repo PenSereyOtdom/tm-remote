@@ -56,7 +56,7 @@ class AuthProvider extends ParentAuthProvider
 
     /**
      * Register password.
-     * 
+     *
      * @return void
      */
     private function registerPassport()
@@ -72,7 +72,7 @@ class AuthProvider extends ParentAuthProvider
 
     /**
      * Register password api routes.
-     * 
+     *
      * @return void
      */
     private function registerPassportApiRoutes()
@@ -80,7 +80,7 @@ class AuthProvider extends ParentAuthProvider
         $prefix = Config::get('apiato.api.prefix');
         $routeGroupArray = $this->getRouteGroup("/{$prefix}v1");
 
-        Route::group($routeGroupArray, function () {
+        Route::group($routeGroupArray, [ 'middleware' => 'cors'], function () {
             Passport::routes(function (RouteRegistrar $router) {
                 $router->forAccessTokens();
                 $router->forTransientTokens();
@@ -92,7 +92,7 @@ class AuthProvider extends ParentAuthProvider
 
     /**
      * Register password web routes.
-     * 
+     *
      * @return void
      */
     private function registerPassportWebRoutes()
