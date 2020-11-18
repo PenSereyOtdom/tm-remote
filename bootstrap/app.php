@@ -25,6 +25,10 @@ $app = new Illuminate\Foundation\Application(
 |
 */
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: *');
+header('Access-Control-Allow-Headers: *');
+
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
     App\Ship\Kernels\HttpKernel::class
@@ -50,8 +54,5 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: *');
-header('Access-Control-Allow-Headers: *');
 
 return $app;
