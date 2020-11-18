@@ -15,6 +15,7 @@ return [
 
     'supported_languages' => [
         'ar',
+        'ja',
         'en' => [
             'en-GB',
             'en-US',
