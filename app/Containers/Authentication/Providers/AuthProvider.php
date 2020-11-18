@@ -81,9 +81,7 @@ class AuthProvider extends ParentAuthProvider
         $routeGroupArray = $this->getRouteGroup("/{$prefix}v1");
 
         Route::group($routeGroupArray, function () {
-            Passport::routes(
-            'middleware' => [ \Fruitcake\Cors\HandleCors::class ],
-            function (RouteRegistrar $router) {
+            Passport::routes(function (RouteRegistrar $router) {
                 $router->forAccessTokens();
                 $router->forTransientTokens();
                 $router->forClients();
