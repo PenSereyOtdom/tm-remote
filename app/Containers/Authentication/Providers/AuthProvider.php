@@ -80,7 +80,7 @@ class AuthProvider extends ParentAuthProvider
         $prefix = Config::get('apiato.api.prefix');
         $routeGroupArray = $this->getRouteGroup("/{$prefix}v1");
 
-        Route::group($routeGroupArray, [ 'middleware' => 'cors'], function () {
+        Route::group([$routeGroupArray, 'middleware' => 'cors'], function () {
             Passport::routes(function (RouteRegistrar $router) {
                 $router->forAccessTokens();
                 $router->forTransientTokens();
