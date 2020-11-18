@@ -19,7 +19,7 @@ return [
      * You can enable CORS for 1 or multiple paths.
      Example: ['api/*']
      */
-    'paths' => ['api/v1/*'],
+    'paths' => ['*'],
 
     /*
     * Matches the request method. `[*]` allows all methods.
@@ -34,7 +34,7 @@ return [
     /*
      * Matches the request origin with, similar to `Request::is()`
      */
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['*'],
 
     /*
      * Sets the Access-Control-Allow-Headers response header. `[*]` allows all headers.
