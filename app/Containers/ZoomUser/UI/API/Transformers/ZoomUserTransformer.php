@@ -32,8 +32,6 @@ class ZoomUserTransformer extends Transformer
         $response = [
             'object' => 'ZoomUser',
             'id' => $entity->getHashedKey(),
-            'first_name' => $entity->first_name,
-            'last_name' => $entity->last_name,
             'email' => $entity->email,
             'zoom_user_id' => $entity->zoom_user_id,
             'created_at' => $entity->created_at,

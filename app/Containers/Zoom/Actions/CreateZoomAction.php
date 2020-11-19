@@ -15,7 +15,6 @@ class CreateZoomAction extends Action {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
         $zoom_user_to_use = Apiato::call('ZoomUser@GetFreeZoomUserTask', [$user,$data]);
 
-
         if (count($zoom_user_to_use)==0) { 
             throw new TimeSlotBusyException();
         }
@@ -24,9 +23,6 @@ class CreateZoomAction extends Action {
         $data["zoom_user_id"] = $zoom_user_to_use[0]->zoom_user_id;
         $data["company_id"] = $zoom_user_to_use[0]->company_id;
         $data['user_id']=$user->id;
-        
-
-
 
         $zoom_res = Apiato::call('Zoom@CallCreateZoomMeetingTask', [$data]);
         $zoom = Apiato::call('Zoom@CreateZoomTask', [$data,$zoom_res]);

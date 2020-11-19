@@ -11,7 +11,7 @@ class CreateZoomUserAction extends Action
     public function run(Request $request)
     {
         $data = $request->sanitizeInput([
-            'first_name','last_name','company_id','password','email'
+            'company_id','email'
         ]);
 
         $company = Apiato::call('Company@FindCompanyByIdTask', [$data['company_id']]);
