@@ -9,7 +9,7 @@ class ZoomUser extends Model
 {
     protected $table = "zoomusers";
     protected $fillable = [
-        'email','first_name','last_name','password','company_id',"zoom_user_id"
+        'email','company_id',"zoom_user_id"
     ];
 
     protected $attributes = [
