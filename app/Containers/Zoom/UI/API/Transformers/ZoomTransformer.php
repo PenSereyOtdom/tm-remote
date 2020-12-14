@@ -38,6 +38,7 @@ class ZoomTransformer extends Transformer
             'id' => $entity->getHashedKey(),
             'topic' => $entity->topic,
             'join_url' => $entity->join_url,
+            'start_url'=> $entity->start_url,
             'start_time' => $entity->start_time,
             'finish_time' => $entity->finish_time,
             'password' => $entity->password,

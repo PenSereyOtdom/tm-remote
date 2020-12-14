@@ -13,6 +13,7 @@ class Zoom extends Model
     
     protected $fillable = [
       'topic',
+      'start_url',
       'join_url',
       'start_time',
       'finish_time',
