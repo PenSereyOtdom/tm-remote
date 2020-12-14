@@ -19,6 +19,7 @@ class CreateZoomTables extends Migration
             $table->timestamp('start_time')->nullable();
             $table->timestamp('finish_time')->nullable();
             $table->unsignedInteger('duration')->nullable();
+            $table->string('start_url',1000)->nullable();
             $table->string('password')->nullable();
             $table->string('note')->nullable();
             $table->unsignedBigInteger('meeting_id');

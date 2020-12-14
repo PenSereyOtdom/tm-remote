@@ -26,6 +26,7 @@ class CreateZoomTask extends Task
                 'start_time'=>$zoom_res->start_time,
                 'finish_time'=>date('Y-m-d H:i:s',strtotime($data['start_time']."+".$data['duration']." minute")),
                 'password'=>$zoom_res->password,
+                'start_url'=>$zoom_res->start_url,
                 'join_url'=>$zoom_res->join_url,
                 'duration'=>$zoom_res->duration,
                 'meeting_id'=>$zoom_res->id,
