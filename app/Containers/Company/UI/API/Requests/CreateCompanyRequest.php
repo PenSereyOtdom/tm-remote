@@ -52,6 +52,7 @@ class CreateCompanyRequest extends Request
     public function rules()
     {
         return [
+            'name'    => 'required|unique:companies,name',
             // 'id' => 'required',
             // '{user-input}' => 'required|max:255',
         ];
